@@ -3,8 +3,17 @@ package supermarketPricing.products;
 import supermarketPricing.manufacturer.Manufacturer;
 import supermarketPricing.products.types.FishingReelTypes;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class FishingReels implements Product {
-    private long productID = 1;
+
+    @Id
+    @GeneratedValue
+    private long productID;
+
     private double price;
     private String measure;
     private String productName;

@@ -8,13 +8,17 @@
     <artifactId>kata-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+
     <modules>
-        <module>kata1</module>
+        <module>model</module>
+        <module>rest</module>
     </modules>
 
     <name>${project.groupId} - ${project.artifactId}</name>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
         <spring.boot.version>1.5.4.RELEASE</spring.boot.version>
     </properties>
 
