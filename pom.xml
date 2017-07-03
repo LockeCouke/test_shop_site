@@ -20,6 +20,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <spring.boot.version>1.5.4.RELEASE</spring.boot.version>
+        <spring.data.version>1.11.4.RELEASE</spring.data.version>
     </properties>
 
         <dependencies>
@@ -41,6 +42,16 @@
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
                 <version>3.3.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-jpa</artifactId>
+                <version>${spring.data.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jetty</artifactId>
+                <version>${spring.boot.version}</version>
             </dependency>
 
             <dependency>

@@ -73,4 +73,27 @@ public class FishingRods implements Product {
     public FishingRodTypes getFishingRodTypes(){
         return fishingRodTypes;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FishingRods that = (FishingRods) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (manufacturer != null ? !manufacturer.equals(that.manufacturer) : that.manufacturer != null) return false;
+        if (fishingRodTypes != that.fishingRodTypes) return false;
+        return productName != null ? productName.equals(that.productName) : that.productName == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
+        result = 31 * result + (fishingRodTypes != null ? fishingRodTypes.hashCode() : 0);
+        result = 31 * result + (productName != null ? productName.hashCode() : 0);
+        return result;
+    }
 }

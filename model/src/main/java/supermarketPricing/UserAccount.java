@@ -46,23 +46,23 @@ public class UserAccount {
         this.password = password;
     }
 
-    Set<Product> getProducts(){
+    public Set<Product> getProducts(){
         return bascet.elementSet();
     }
 
-    boolean delProduct(Product product){
+    public boolean delProduct(Product product){
         return bascet.remove(product);
     }
 
-    boolean delProducts(Product product){
+    public boolean delProducts(Product product){
         return bascet.remove(product, bascet.count(product))==0;
     }
 
-    void clearBacket(){
+    public void clearBacket(){
         bascet.clear();
     }
 
-    void addProduct(Product product){
+    public void addProduct(Product product){
         bascet.add(product);
     }
 
