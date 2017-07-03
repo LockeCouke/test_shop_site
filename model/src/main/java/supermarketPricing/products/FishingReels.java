@@ -1,28 +1,32 @@
 package supermarketPricing.products;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import supermarketPricing.UserAccount;
 import supermarketPricing.manufacturer.Manufacturer;
 import supermarketPricing.products.types.FishingReelTypes;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class FishingReels implements Product {
+
+    @JsonIgnore
+    @ManyToOne
+    private UserAccount account;
 
     @Id
     @GeneratedValue
     private long productID;
 
     private double price;
-    private String measure;
-    private String productName;
+      private String productName;
     private Manufacturer manufacturer;
     private FishingReelTypes fishingReelTypes;
 
-    public FishingReels(int price, String measure, String productName, FishingReelTypes fishingReelTypes){
+    public FishingReels(int price, String productName, FishingReelTypes fishingReelTypes){
         this.price = price;
-        this.measure = measure;
         this.productName = productName;
         this.fishingReelTypes = fishingReelTypes;
     }
@@ -37,10 +41,6 @@ public class FishingReels implements Product {
 
     public long getProductID() {
         return productID;
-    }
-
-    public String getMeasure() {
-        return measure;
     }
 
     public String getProductName() {

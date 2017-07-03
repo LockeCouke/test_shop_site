@@ -1,18 +1,18 @@
+package supermarketPricing;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.RestController;
 import supermarketPricing.products.Product;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Set;
 
-@RestController
-@EnableAutoConfiguration
-public class Account {
+@Entity
+public class UserAccount {
 
     @OneToMany(mappedBy = "account")
     private Multiset<Product> bascet = HashMultiset.create();
@@ -68,6 +68,5 @@ public class Account {
     void addProduct(Product product){
         bascet.add(product);
     }
-
 
 }

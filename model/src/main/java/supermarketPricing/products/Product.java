@@ -8,7 +8,6 @@ public interface Product {
     Manufacturer getManufacturer();
     double getPrice();
     long getProductID();
-    String getMeasure();
     String getProductName();
     void setManufacturer(Manufacturer manufacturer);
     void setProductID(long id);

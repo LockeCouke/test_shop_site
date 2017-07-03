@@ -7,14 +7,12 @@ public class FishingRods implements Product {
 
     private long productID = 1;
     private double price;
-    private String measure;
     private String productName;
     private Manufacturer manufacturer;
     private FishingRodTypes fishingRodTypes;
 
-    public FishingRods(int price, String measure, String productName, FishingRodTypes fishingRodTypes){
+    public FishingRods(int price, String productName, FishingRodTypes fishingRodTypes){
         this.price = price;
-        this.measure = measure;
         this.productName = productName;
         this.fishingRodTypes = fishingRodTypes;
     }
@@ -29,10 +27,6 @@ public class FishingRods implements Product {
 
     public long getProductID() {
         return productID;
-    }
-
-    public String getMeasure() {
-        return measure;
     }
 
     public String getProductName() {
