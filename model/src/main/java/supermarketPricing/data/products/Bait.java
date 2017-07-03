@@ -3,11 +3,9 @@ package supermarketPricing.data.products;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import supermarketPricing.UserAccount;
 import supermarketPricing.data.manufacturer.Manufacturer;
+import supermarketPricing.data.products.types.BiteTypes;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Bait implements Product {
@@ -19,6 +17,9 @@ public class Bait implements Product {
     @ManyToOne
     Manufacturer manufacturer;
 
+    @Enumerated(EnumType.STRING)
+    private BiteTypes biteTypes;
+
     @JsonIgnore
     @ManyToOne
     private UserAccount userAccount;
@@ -26,6 +27,14 @@ public class Bait implements Product {
     double price;
     String productName;
     int packageQuantity;
+
+    public Bait(Manufacturer manufacturer, BiteTypes biteTypes, double price, String productName, int packageQuantity) {
+        this.manufacturer = manufacturer;
+        this.biteTypes = biteTypes;
+        this.price = price;
+        this.productName = productName;
+        this.packageQuantity = packageQuantity;
+    }
 
     @Override
     public Manufacturer getManufacturer() {
@@ -38,7 +47,7 @@ public class Bait implements Product {
     }
 
     @Override
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,7 +57,7 @@ public class Bait implements Product {
     }
 
     @Override
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -73,5 +82,38 @@ public class Bait implements Product {
 
     public void setPackageQuantity(int packageQuantity) {
         this.packageQuantity = packageQuantity;
+    }
+
+    public BiteTypes getBiteTypes() {
+        return biteTypes;
+    }
+
+    public void setBiteTypes(BiteTypes biteTypes) {
+        this.biteTypes = biteTypes;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Bait bait = (Bait) o;
+
+        if (packageQuantity != bait.packageQuantity) return false;
+        if (!id.equals(bait.id)) return false;
+        if (!manufacturer.equals(bait.manufacturer)) return false;
+        if (biteTypes != bait.biteTypes) return false;
+        return productName.equals(bait.productName);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + manufacturer.hashCode();
+        result = 31 * result + biteTypes.hashCode();
+        result = 31 * result + productName.hashCode();
+        result = 31 * result + packageQuantity;
+        return result;
     }
 }

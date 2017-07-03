@@ -12,7 +12,7 @@ public class FishingRods implements Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @JsonIgnore
     @ManyToOne
@@ -27,10 +27,11 @@ public class FishingRods implements Product {
     private double price;
     private String productName;
 
-    public FishingRods(int price, String productName, FishingRodTypes fishingRodTypes){
+    public FishingRods(int price, String productName, FishingRodTypes fishingRodTypes, Manufacturer manufacturer){
         this.price = price;
         this.productName = productName;
         this.fishingRodTypes = fishingRodTypes;
+        this.manufacturer =  manufacturer;
     }
 
     public Manufacturer getManufacturer() {
@@ -41,7 +42,7 @@ public class FishingRods implements Product {
         return price;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -53,8 +54,8 @@ public class FishingRods implements Product {
         this.manufacturer = manufacturer;
     }
 
-    public void setId(long id) {
-        this.id =id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setPrice(double price) {

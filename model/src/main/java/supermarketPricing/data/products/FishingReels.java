@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import supermarketPricing.UserAccount;
 import supermarketPricing.data.manufacturer.Manufacturer;
 import supermarketPricing.data.products.types.FishingReelTypes;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+
+import javax.persistence.*;
 
 @Entity
 public class FishingReels implements Product {
@@ -18,17 +16,45 @@ public class FishingReels implements Product {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
-    private double price;
-      private String productName;
+    @ManyToOne
     private Manufacturer manufacturer;
+
+    @Enumerated(EnumType.STRING)
     private FishingReelTypes fishingReelTypes;
 
-    public FishingReels(int price, String productName, FishingReelTypes fishingReelTypes){
+    private double price;
+    private String productName;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FishingReels that = (FishingReels) o;
+
+        if (!id.equals(that.id)) return false;
+        if (!manufacturer.equals(that.manufacturer)) return false;
+        if (fishingReelTypes != that.fishingReelTypes) return false;
+        return productName.equals(that.productName);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + manufacturer.hashCode();
+        result = 31 * result + fishingReelTypes.hashCode();
+        result = 31 * result + productName.hashCode();
+        return result;
+    }
+
+    public FishingReels(int price, String productName, FishingReelTypes fishingReelTypes, Manufacturer manufacturer){
         this.price = price;
         this.productName = productName;
         this.fishingReelTypes = fishingReelTypes;
+        this.manufacturer = manufacturer;
     }
 
     public Manufacturer getManufacturer() {
@@ -39,7 +65,7 @@ public class FishingReels implements Product {
         return price;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -51,8 +77,8 @@ public class FishingReels implements Product {
         this.manufacturer = manufacturer;
     }
 
-    public void setId(long id) {
-        this.id =id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setPrice(double price) {

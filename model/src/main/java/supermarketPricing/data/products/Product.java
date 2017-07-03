@@ -7,10 +7,10 @@ public interface Product {
     //TODO: добавить @column аннотации к нужным полям.
     Manufacturer getManufacturer();
     double getPrice();
-    long getId();
+    Long getId();
     String getProductName();
     void setManufacturer(Manufacturer manufacturer);
-    void setId(long id);
+    void setId(Long id);
     void setPrice(double price);
     void setProductName(String name);
 }

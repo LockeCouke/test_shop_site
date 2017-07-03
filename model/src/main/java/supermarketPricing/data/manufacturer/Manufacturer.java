@@ -22,6 +22,7 @@ public class Manufacturer {
     private String name;
     private String adress;
 
+    @Enumerated(EnumType.STRING)
     private ManufacturerCountry manufactCountry;
 
 
