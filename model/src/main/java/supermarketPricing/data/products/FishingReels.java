@@ -1,9 +1,9 @@
-package supermarketPricing.products;
+package supermarketPricing.data.products;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import supermarketPricing.UserAccount;
-import supermarketPricing.manufacturer.Manufacturer;
-import supermarketPricing.products.types.FishingReelTypes;
+import supermarketPricing.data.manufacturer.Manufacturer;
+import supermarketPricing.data.products.types.FishingReelTypes;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,7 +18,7 @@ public class FishingReels implements Product {
 
     @Id
     @GeneratedValue
-    private long productID;
+    private long id;
 
     private double price;
       private String productName;
@@ -39,8 +39,8 @@ public class FishingReels implements Product {
         return price;
     }
 
-    public long getProductID() {
-        return productID;
+    public long getId() {
+        return id;
     }
 
     public String getProductName() {
@@ -51,8 +51,8 @@ public class FishingReels implements Product {
         this.manufacturer = manufacturer;
     }
 
-    public void setProductID(long id) {
-        this.productID=id;
+    public void setId(long id) {
+        this.id =id;
     }
 
     public void setPrice(double price) {

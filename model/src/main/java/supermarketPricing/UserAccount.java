@@ -3,12 +3,9 @@ package supermarketPricing;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;
-import supermarketPricing.products.Product;
+import supermarketPricing.data.products.Product;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -18,7 +15,7 @@ public class UserAccount {
     private Multiset<Product> bascet = HashMultiset.create();
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @JsonIgnore

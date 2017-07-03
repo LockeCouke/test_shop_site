@@ -1,15 +1,31 @@
-package supermarketPricing.products;
+package supermarketPricing.data.products;
 
-import supermarketPricing.manufacturer.Manufacturer;
-import supermarketPricing.products.types.FishingRodTypes;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import supermarketPricing.UserAccount;
+import supermarketPricing.data.manufacturer.Manufacturer;
+import supermarketPricing.data.products.types.FishingRodTypes;
 
+import javax.persistence.*;
+
+@Entity
 public class FishingRods implements Product {
 
-    private long productID = 1;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @JsonIgnore
+    @ManyToOne
+    private UserAccount userAccount;
+
+    @ManyToOne
+    private Manufacturer manufacturer;
+
+    @Enumerated(EnumType.STRING)
+    private FishingRodTypes fishingRodTypes;
+
     private double price;
     private String productName;
-    private Manufacturer manufacturer;
-    private FishingRodTypes fishingRodTypes;
 
     public FishingRods(int price, String productName, FishingRodTypes fishingRodTypes){
         this.price = price;
@@ -25,8 +41,8 @@ public class FishingRods implements Product {
         return price;
     }
 
-    public long getProductID() {
-        return productID;
+    public long getId() {
+        return id;
     }
 
     public String getProductName() {
@@ -37,8 +53,8 @@ public class FishingRods implements Product {
         this.manufacturer = manufacturer;
     }
 
-    public void setProductID(long id) {
-        this.productID=id;
+    public void setId(long id) {
+        this.id =id;
     }
 
     public void setPrice(double price) {

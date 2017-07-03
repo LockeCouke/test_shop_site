@@ -1,6 +1,6 @@
 package supermarketPricing.discounts;
 
-import supermarketPricing.products.Product;
+import supermarketPricing.data.products.Product;
 
 import java.util.LinkedList;
 import java.util.List;
